@@ -33,6 +33,7 @@
         <!-- 実行ボタン -->
         <Button
             Grid.Row="2" Grid.Column="1"
+            Name="button_1"
             Margin="10"
             Width="75"
             Content="実行"

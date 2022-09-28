@@ -29,19 +29,23 @@ namespace WpfProgress2
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var vm = this.DataContext as ViewModel;
-
-            await Task.Run(async () =>
-            {
-                while( vm.Progress < 100 )
-                {
-                    vm.Progress += 1;
-                    await Task.Delay(10);
-                }
-            });
+            // this.button_1.IsEnabled = false;
+            ((Button)sender).IsEnabled = false;
+            await runProgressBar();
 
             MessageBox.Show(@"タスクが完了しました．");
-            vm.Progress = 0;
+            ((ViewModel)this.DataContext).Progress = 0;
+            ((Button)sender).IsEnabled = true;
+        }
+
+        private async Task runProgressBar()
+        {
+            var vm = this.DataContext as ViewModel;
+            while( vm.Progress < 100)
+            {
+                vm.Progress += 1;
+                await Task.Delay(10);
+            }
         }
 
         public class ViewModel : INotifyPropertyChanged
@@ -52,19 +56,11 @@ namespace WpfProgress2
                 get { return this._Progress; }
                 set {
                     this._Progress = value;
-                    this.NotifyPropertyChanged(nameof(this.Progress));
+                    this.PropertyChanged(this, new PropertyChangedEventArgs(nameof(this.Progress)));
                 }
             }
 
             public event PropertyChangedEventHandler PropertyChanged;
-
-            private void NotifyPropertyChanged(string name)
-            {
-                this.PropertyChanged.Invoke(
-                    this,
-                    new PropertyChangedEventArgs(name)
-                );
-            }
         }
     }
 }
