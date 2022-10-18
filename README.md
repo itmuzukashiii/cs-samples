@@ -44,6 +44,11 @@
 
 - ManualResetEvent でスレッドをシグナル制御するテスト
 
+### NullableTest
+
+- Null 許容演算子のサンプル
+- csproj で Nullable はデフォルトで enable にしておいた方がいいかも
+
 ### TaskAwaitResult
 
 - 書籍からのコピペ
