@@ -49,6 +49,12 @@
 - Null 許容演算子のサンプル
 - csproj で Nullable はデフォルトで enable にしておいた方がいいかも
 
+### TaskAndSemaphoreSlimTest
+
+- Task を並行実行させて配列に格納し，すべて完了後結果を取得するサンプル
+- SemaphoreSlim を用いて同時実行数を制限している
+- List の LINQ ForEach を用いて IEnumerable の各要素とインデックスを引数にした処理を行う例
+
 ### TaskAwaitResult
 
 - 書籍からのコピペ
@@ -60,6 +66,7 @@
 ```
 これは非同期メソッドであるため、return 式は 'Task<long>' ではなく 'long' 型である必要があります [TaskAwaitResult]
 ```
+
 
 
 ## csc
